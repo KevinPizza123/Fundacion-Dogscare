@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOGSCARE</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style id="app-style">
+        :root {
+            --primary-color: #070be0;
+            --secondary-color: #ff9800;
+            --dark-color: #070be0;
+            --light-color: #f8f9fa;
+            --accent-color: #e91e63;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            background-color: #f9f9f9;
+        }
+        
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .nav-link {
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-color);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: #0f0cb1;
+            border-color: #eff5ef;
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(238, 236, 236, 0.7), rgba(0, 0, 0, 0.7)),url('images/portada.jpg') no-repeat center center/cover;
+            color: rgb(2, 2, 3);
+            padding: 150px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 40px;
+            font-weight: 700;
+            color: var(--dark-color);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary-color);
+        }
+        
+        .card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .stat-card {
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .stat-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .stat-card h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+        
+        .stat-card p {
+            color: #6c757d;
+            margin-bottom: 0;
+        }
+        
+        .team-member {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 5px solid var(--light-color);
+        }
+        
+        .team-member h5 {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .team-member p {
+            color: #6c757d;
+            margin-bottom: 15px;
+        }
+        
+        .team-member .social a {
+            color: var(--dark-color);
+            margin: 0 8px;
+            transition: color 0.3s ease;
+        }
+        
+        .team-member .social a:hover {
+            color: var(--primary-color);
+        }
+        
+        .testimonial {
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        
+        .testimonial img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+        
+        .testimonial .content {
+            color: #6c757d;
+        }
+        
+        .testimonial .author {
+            font-weight: 600;
+            margin-bottom: 0;
+        }
+        
+        .testimonial .role {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        
+        .contact-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 50px 0;
+        }
+        
+        footer h5 {
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        footer ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        footer ul li {
+            margin-bottom: 10px;
+        }
+        
+        footer ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        footer ul li a:hover {
+            color: white;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            color: white;
+            margin-right: 10px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary-color);
+        }
+        
+        .copyright {
+            background-color: rgba(0, 0, 0, 0.2);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 15px 0;
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        /* Estilos para la galería de rescates */
+        .gallery-item {
+            position: relative;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-item .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            padding: 20px;
+            color: white;
+        }
+        
+        .gallery-item .overlay h5 {
+            margin-bottom: 5px;
+        }
+        
+        .gallery-item .overlay p {
+            margin-bottom: 0;
+            font-size: 0.9rem;
+        }
+        
+        .upload-container {
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .upload-area {
+            border: 2px dashed #ddd;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: border-color 0.3s ease;
+        }
+        
+        .upload-area:hover {
+            border-color: var(--primary-color);
+        }
+        
+        .upload-area i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        /* Estilos para formularios */
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.25rem rgba(76, 175, 80, 0.25);
+        }
+        
+        /* Estilos para vista móvil */
+        @media (max-width: 767.98px) {
+            .hero {
+                padding: 50px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-padding {
+                padding: 50px 0;
+            }
+            
+            .card-img-top {
+                height: 180px;
+            }
+            
+            .team-member img {
+                width: 120px;
+                height: 120px;
+            }
+        }
+        
+        /* Animaciones */
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Estilos para las tabs */
+        .nav-tabs .nav-link {
+            border: none;
+            color: var(--dark-color);
+            font-weight: 500;
+        }
+        
+        .nav-tabs .nav-link.active {
+            border-bottom: 3px solid var(--primary-color);
+            color: var(--primary-color);
+            background-color: transparent;
+        }
+        
+        #loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .spinner-border {
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header / Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#inicio">
+                <i class="fas fa-paw me-2"></i>DOGSCARE
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#inicio">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#quienes-somos">Quiénes Somos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#rescates">Rescates</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#donaciones">Donaciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacto">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sección Inicio -->
+    <div id="inicio" class="hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h1 class="display-4 fade-in">Protegiendo a quienes no tienen voz</h1>
+                    <p class="lead fade-in">Somos una fundación dedicada al rescate, rehabilitación y adopción de animales en situación de abandono o maltrato.</p>
+                    <div class="mt-4 fade-in">
+                        <a href="#donaciones" class="btn btn-primary btn-lg me-2">Donar ahora</a>
+                        <a href="#quienes-somos" class="btn btn-outline-light btn-lg">Conocer más</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección Estadísticas -->
+    <div class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="stat-card">
+                        <i class="fas fa-paw"></i>
+                        <h3>250+</h3>
+                        <p>Animales Rescatados</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="stat-card">
+                        <i class="fas fa-home"></i>
+                        <h3>180+</h3>
+                        <p>Adopciones Exitosas</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="stat-card">
+                        <i class="fas fa-heart"></i>
+                        <h3>50+</h3>
+                        <p>Voluntarios</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="stat-card">
+                        <i class="fas fa-user-md"></i>
+                        <h3>5</h3>
+                        <p>Veterinarios</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección Quiénes Somos -->
+    <section id="quienes-somos" class="py-5">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-md-12 text-center">
+                    <h2 class="section-title text-center mx-auto">Quiénes Somos</h2>
+                </div>
+            </div>
+            
+            <div class="row align-items-center mb-5">
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <img src="images/portada2.jpg" class="img-fluid rounded shadow">
+                </div>
+                <div class="col-md-6">
+                    <h3>Nuestra Misión</h3>
+                    <p class="lead">Rescatar, rehabilitar y encontrar hogares permanentes para animales abandonados, maltratados o en peligro.</p>
+                    <p>Trabajamos incansablemente para mejorar la vida de los animales necesitados y educar sobre la importancia del cuidado responsable de mascotas. Nuestro objetivo es crear un mundo donde todos los animales sean tratados con compasión y respeto.</p>
+                </div>
+            </div>
+            
+            <div class="row align-items-center mb-5">
+                <div class="col-md-6 order-md-2 mb-4 mb-md-0">
+                    <img src="images/portada2.jpg" class="img-fluid rounded shadow">
+                </div>
+                <div class="col-md-6 order-md-1">
+                    <h3>Nuestra Visión</h3>
+                    <p class="lead">Un mundo donde ningún animal sufra abandono, maltrato o falta de atención médica.</p>
+                    <p>Aspiramos a ser un referente en protección animal, estableciendo estándares de excelencia en rescate, rehabilitación y adopción responsable. Buscamos construir una comunidad consciente que respete y proteja a todos los seres vivos.</p>
+                </div>
+            </div>
+            
+            <div class="row mb-5">
+                <div class="col-md-12">
+                    <h3 class="text-center mb-4">Nuestra Historia</h3>
+                    <div class="card">
+                        <div class="card-body">
+                            <p>Fundada en 2015 por un grupo de amantes de los animales preocupados por el creciente número de abandono de mascotas en nuestra comunidad, AnimalCare comenzó con un pequeño refugio improvisado y un puñado de voluntarios comprometidos.</p>
+                            
+                            <p>A lo largo de los años, hemos crecido hasta convertirnos en una organización reconocida, con instalaciones adecuadas, programas de rehabilitación especializados y una red de familias adoptivas y colaboradores que comparten nuestra pasión por el bienestar animal.</p>
+                            
+                            <p>Cada año realizamos más rescates, ofrecemos más servicios veterinarios y educamos a más personas sobre la tenencia responsable de mascotas. Con cada animal que ayudamos, renovamos nuestro compromiso con la causa y avanzamos hacia nuestra visión de un mundo mejor para todos los seres vivos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="text-center mb-4">Nuestro Equipo</h3>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="team-member">
+                        <img src="images/persona.jpg" alt="María Rodríguez">
+                        <h5>María Rodríguez</h5>
+                        <p>Fundadora y Directora</p>
+                        <div class="social">
+                            <a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a>
+                            <a href="javascript:void(0)"><i class="fab fa-twitter"></i></a>
+                            <a href="javascript:void(0)"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="team-member">
+                        <img src="images/persona.jpg" alt="Carlos González">
+                        <h5>Carlos González</h5>
+                        <p>Coordinador de Rescates</p>
+                        <div class="social">
+                            <a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a>
+                            <a href="javascript:void(0)"><i class="fab fa-twitter"></i></a>
+                            <a href="javascript:void(0)"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="team-member">
+                        <img src="images/persona.jpg" alt="Dra. Ana López">
+                        <h5>Dra. Ana López</h5>
+                        <p>Veterinaria Principal</p>
+                        <div class="social">
+                            <a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a>
+                            <a href="javascript:void(0)"><i class="fab fa-twitter"></i></a>
+                            <a href="javascript:void(0)"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="team-member">
+                        <img src="images/persona.jpg" alt="Pablo Martínez">
+                        <h5>Pablo Martínez</h5>
+                        <p>Coordinador de Voluntarios</p>
+                        <div class="social">
+                            <a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a>
+                            <a href="javascript:void(0)"><i class="fab fa-twitter"></i></a>
+                            <a href="javascript:void(0)"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Rescates -->
+    <section id="rescates" class="py-5 bg-light">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-md-12 text-center">
+                    <h2 class="section-title text-center mx-auto">Rescates</h2>
+                    <p class="lead">Conoce a algunos de los animales que hemos rescatado y rehabilitado.</p>
+                </div>
+            </div>
+           <div class="row">
+                <div class="col-md-12 mb-4">
+                    <ul class="nav nav-tabs" id="rescuesTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="recientes-tab" data-bs-toggle="tab" data-bs-target="#recientes" type="button" role="tab" aria-controls="recientes" aria-selected="true">Rescates Recientes</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="exitosos-tab" data-bs-toggle="tab" data-bs-target="#exitosos" type="button" role="tab" aria-controls="exitosos" aria-selected="false">Historias Exitosas</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="adopcion-tab" data-bs-toggle="tab" data-bs-target="#adopcion" type="button" role="tab" aria-controls="adopcion" aria-selected="false">En Adopción</button>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="tab-content" id="rescuesTabsContent">
+                    <div class="tab-pane fade show active" id="recientes" role="tabpanel" aria-labelledby="recientes-tab">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-6">
+                                <div class="gallery-item">
+                                    <img src="images/perro1.jfif" alt="Perro rescatado">
+                                    <div class="overlay">
+                                        <h5>Max</h5>
+                                        <p>Rescatado de la calle, ahora en recuperación</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="gallery-item">
+                                    <img src="images/portada2.jpg" alt="Gato rescatado">
+                                    <div class="overlay">
+                                        <h5>Luna</h5>
+                                        <p>Encontrada abandonada, ahora sana y feliz</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="gallery-item">
+                                    <img src="https://source.unsplash.com/random/600x400/?puppy,rescue" alt="Cachorro rescatado">
+                                    <div class="overlay">
+                                        <h5>Toby</h5>
+                                        <p>Rescatado de un hogar abusivo</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="gallery-item">
+                                    <img src="https://source.unsplash.com/random/600x400/?bird,rescue" alt="Ave rescatada">
+                                    <div class="overlay">
+                                        <h5>Piolín</h5>
+                                        <p>Ave rescatada con ala lesionada</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="gallery-item">
+                                    <img src="https://source.unsplash.com/random/600x400/?dog,street" alt="Perro rescatado">
+                                    <div class="overlay">
+                                        <h5>Rocky</h5>
+                                        <p>Rescatado de la calle, en tratamiento</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="gallery-item">
+                                    <img src="https://source.unsplash.com/random/600x400/?cat,rescue" alt="Gato rescatado">
+                                    <div class="overlay">
+                                        <h5>Mía</h5>
+                                        <p>Gata embarazada rescatada</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="exitosos" role="tabpanel" aria-labelledby="exitosos-tab">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-6">
+                                <div class="gallery-item">
+                                    <img src="images/perro.jpg" alt="Perro adoptado">
+                                    <div class="overlay">
+                                        <h5>Bruno</h5>
+                                        <p>Adoptado por la familia Martínez</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="gallery-item">
+                                    <img src="https://source.unsplash.com/random/600x400/?cat,home" alt="Gato adoptado">
+                                    <div class="overlay">
+                                        <h5>Nala</h5>
+                                        <p>En su nuevo hogar después de 3 meses</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="gallery-item">
+                                    <img src="https://source.unsplash.com/random/600x400/?dog,family" alt="Perro con familia">
+                                    <div class="overlay">
+                                        <h5>Simba</h5>
+                                        <p>De caso crítico a mascota amada</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="adopcion" role="tabpanel" aria-labelledby="adopcion-tab">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-6">
+                                <div class="card mb-4">
+                                    <img src="images/gato.jpg" class="card-img-top" alt="Cachorro en adopción">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Pelusa</h5>
+                                        <p class="card-text">Cachorro de 4 meses, juguetón y cariñoso. Vacunado y desparasitado.</p>
+                                        <a href="javascript:void(0)" class="btn btn-primary btn-solicitar" data-nombre="Pelusa">Solicitar Adopción</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="card mb-4">
+                                    <img src="https://source.unsplash.com/random/600x400/?kitten,adoption" class="card-img-top" alt="Gatito en adopción">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Oreo</h5>
+                                        <p class="card-text">Gatito de 3 meses, tranquilo y limpio. Esterilizado y con primera vacuna.</p>
+                                        <a href="javascript:void(0)" class="btn btn-primary btn-solicitar" data-nombre="Oreo">Solicitar Adopción</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="card mb-4">
+                                    <img src="https://source.unsplash.com/random/600x400/?adult,dog" class="card-img-top" alt="Perro adulto en adopción">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Rex</h5>
+                                        <p class="card-text">Perro adulto de 5 años, ideal para familia. Entrenado y sociable.</p>
+                                        <a href="javascript:void(0)" class="btn btn-primary btn-solicitar" data-nombre="Rex">Solicitar Adopción</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Donaciones -->
+    <section id="donaciones" class="py-5">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-md-12 text-center">
+                    <h2 class="section-title text-center mx-auto">Donaciones</h2>
+                    <p class="lead">Tu apoyo nos permite seguir rescatando y cuidando animales necesitados</p>
+                </div>
+            </div>
+            
+            <div class="row" style="display: flex; justify-content: center; align-items: center; min-height: 100vh;">
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4>Métodos de Pago Directos</h4>
+                            <p>Puedes realizar tu donación directamente a través de estos medios:</p>
+                            
+                            <div class="mb-4">
+                                <h5 class="fw-bold"><i class="fas fa-university me-2"></i>Transferencia Bancaria</h5>
+                                <div class="card bg-light p-3 mb-2">
+                                    <p class="mb-1"><strong>Banco Nacional:</strong> 123-456789-01</p>
+                                    <p class="mb-1"><strong>Titular:</strong> Fundación AnimalCare</p>
+                                    <p class="mb-0"><strong>CLABE:</strong> 01234567890123456789</p>
+                                </div>
+                                <div class="card bg-light p-3">
+                                    <p class="mb-1"><strong>Banco Internacional:</strong> 987-654321-02</p>
+                                    <p class="mb-1"><strong>Titular:</strong> Fundación AnimalCare</p>
+                                    <p class="mb-0"><strong>SWIFT:</strong> ANIMALCARE01</p>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <h5 class="fw-bold"><i class="fab fa-paypal me-2"></i>PayPal</h5>
+                                <p class="mb-3">Realiza tu donación de forma rápida y segura a través de PayPal:</p>
+                                <a href="https://paypal.me/animalcare" target="_blank" class="btn btn-primary mb-2 w-100">
+                                    <i class="fab fa-paypal me-2"></i>Donar con PayPal
+                                </a>
+                                <p class="small text-muted">O envía tu donación a: donaciones@animalcare.org</p>
+                            </div>
+                            
+                            <div class="alert alert-info mt-4">
+                                <i class="fas fa-info-circle me-2"></i>
+                                Si realizas una transferencia directa, por favor envía el comprobante a 
+                                <a href="mailto:donaciones@animalcare.org">donaciones@animalcare.org</a> 
+                                para registrar tu donación y enviarte un recibo.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="text-center mb-4">Nuestros Donantes</h4>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <div class="testimonial">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <img src="https://source.unsplash.com/random/100x100/?person" alt="Donante">
+                                            <div>
+                                                <p class="author">Juan Pérez</p>
+                                                <p class="role mb-0">Donante mensual desde 2020</p>
+                                            </div>
+                                        </div>
+                                        <p class="content">"Donar a AnimalCare ha sido una de las mejores decisiones que he tomado. Saber que puedo contribuir al bienestar de tantos animales me llena de satisfacción."</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="testimonial">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <img src="https://source.unsplash.com/random/100x100/?woman" alt="Donante">
+                                            <div>
+                                                <p class="author">Laura Gómez</p>
+                                                <p class="role mb-0">Donante y voluntaria</p>
+                                            </div>
+                                        </div>
+                                        <p class="content">"Empecé donando alimentos y ahora también dedico tiempo como voluntaria. Ver la diferencia que hacemos en la vida de estos animales es increíble."</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="testimonial">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <img src="https://source.unsplash.com/random/100x100/?man" alt="Donante">
+                                            <div>
+                                                <p class="author">Empresa Petfood S.A.</p>
+                                                <p class="role mb-0">Patrocinador oficial</p>
+                                            </div>
+                                        </div>
+                                        <p class="content">"Como empresa comprometida con el bienestar animal, estamos orgullosos de apoyar el increíble trabajo que realiza AnimalCare día a día."</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Contacto -->
+    <section id="contacto" class="py-5 bg-light">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-md-12 text-center">
+                    <h2 class="section-title text-center mx-auto">Contáctanos</h2>
+                    <p class="lead">Estamos aquí para atender tus dudas e inquietudes</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-5 mb-4 mb-md-0">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4 class="mb-4">Información de Contacto</h4>
+                            <ul class="list-unstyled">
+                                <li class="mb-3 d-flex">
+                                    <i class="fas fa-map-marker-alt text-primary me-3 mt-1 fa-fw"></i>
+                                    <span>Av. Siempre Viva 742, Springfield</span>
+                                </li>
+                                <li class="mb-3 d-flex">
+                                    <i class="fas fa-phone-alt text-primary me-3 mt-1 fa-fw"></i>
+                                    <span>(555) 123-4567</span>
+                                </li>
+                                <li class="mb-3 d-flex">
+                                    <i class="fas fa-envelope text-primary me-3 mt-1 fa-fw"></i>
+                                    <span>contacto@animalcare.org</span>
+                                </li>
+                            </ul>
+                            
+                            <h5 class="mt-4 mb-3">Horarios de Atención</h5>
+                            <ul class="list-unstyled">
+                                <li class="mb-2 d-flex">
+                                    <span class="fw-bold me-2 w-50">Lunes a Viernes:</span>
+                                    <span>9:00 AM - 6:00 PM</span>
+                                </li>
+                                <li class="mb-2 d-flex">
+                                    <span class="fw-bold me-2 w-50">Sábados:</span>
+                                    <span>10:00 AM - 3:00 PM</span>
+                                </li>
+                                <li class="mb-2 d-flex">
+                                    <span class="fw-bold me-2 w-50">Domingos:</span>
+                                    <span>Cerrado</span>
+                                </li>
+                            </ul>
+                            
+                            <h5 class="mt-4 mb-3">Síguenos</h5>
+                            <div class="d-flex">
+                                <a href="javascript:void(0)" class="btn btn-outline-primary me-2">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="javascript:void(0)" class="btn btn-outline-primary me-2">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="javascript:void(0)" class="btn btn-outline-primary me-2">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="javascript:void(0)" class="btn btn-outline-primary">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                    <div class="col-md-7">
+                        <div class="contact-form">
+                            <h4 class="mb-4">Envíanos un Mensaje</h4>
+                            <form id="contactForm" netlify method="POST" name="contacto">
+                                <p hidden>
+                                    <label>No llenar: <input type="text" name="bot-field" /></label>
+                                </p>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="nombre" class="form-label">Nombre</label>
+                                        <input type="text" class="form-control" id="nombre" name="nombre" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="email" class="form-label">Correo Electrónico</label>
+                                        <input type="email" class="form-control" id="email" name="email" required>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="telefono" class="form-label">Teléfono</label>
+                                        <input type="tel" class="form-control" id="telefono" name="telefono">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="asunto" class="form-label">Asunto</label>
+                                        <select class="form-select" id="asunto" name="asunto" required>
+                                            <option value="" selected disabled>Seleccionar</option>
+                                            <option value="informacion">Información General</option>
+                                            <option value="voluntariado">Voluntariado</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="mensaje" class="form-label">Mensaje</label>
+                                    <textarea class="form-control" id="mensaje" name="mensaje" rows="4" required></textarea>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="privacidad" name="privacidad" required>
+                                    <label class="form-check-label" for="privacidad">Acepto la política de privacidad</label>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Enviar Mensaje</button>
+                            </form>
+                        </div>
+                    </div>
+               
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5>Acerca de AnimalCare</h5>
+                    <p class="text-muted">Somos una fundación sin fines de lucro dedicada al rescate, rehabilitación y adopción de animales necesitados. Trabajamos para crear un mundo donde todos los animales sean tratados con respeto y compasión.</p>
+                    <div class="social-links mt-3">
+                        <a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a>
+                        <a href="javascript:void(0)"><i class="fab fa-twitter"></i></a>
+                        <a href="javascript:void(0)"><i class="fab fa-instagram"></i></a>
+                        <a href="javascript:void(0)"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-6 mb-4 mb-md-0">
+                    <h5>Enlaces</h5>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#quienes-somos">Quiénes Somos</a></li>
+                        <li><a href="#rescates">Rescates</a></li>
+                        <li><a href="#donaciones">Donaciones</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-6 mb-4 mb-md-0">
+                    <h5>Servicios</h5>
+                    <ul>
+                        <li><a href="javascript:void(0)">Adopciones</a></li>
+                        <li><a href="javascript:void(0)">Rescates</a></li>
+                        <li><a href="javascript:void(0)">Voluntariado</a></li>
+                        <li><a href="javascript:void(0)">Donaciones</a></li>
+                        <li><a href="javascript:void(0)">Educación</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Contáctanos</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-map-marker-alt me-2"></i> Av. Siempre Viva 742, Springfield</li>
+                        <li><i class="fas fa-phone-alt me-2"></i> (555) 123-4567</li>
+                        <li><i class="fas fa-envelope me-2"></i> contacto@animalcare.org</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2025 AnimalCare. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="scripts.js"></script>
+</body>
+</html>
